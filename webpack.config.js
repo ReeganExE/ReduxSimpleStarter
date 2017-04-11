@@ -5,22 +5,23 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'app.js'
   },
   module: {
-    loaders: [{
+    rules: [{
+      test: /\.(js|jsx)$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
+      loader: [
+        'babel-loader'
+      ],
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
   },
   devServer: {
+    host: '0.0.0.0',
     historyApiFallback: true,
     contentBase: './'
-  }
+  },
+  devtool: 'source-map'
 };
